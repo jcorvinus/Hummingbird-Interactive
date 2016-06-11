@@ -3,11 +3,15 @@ using System.Collections;
 
 public class WorldTap : MonoBehaviour
 {
-    [SerializeField] WorldCursor cursor;
+    ProgramController programController;
+
+    void Awake()
+    {
+        programController = GameObject.FindGameObjectWithTag("GameController").GetComponent<ProgramController>();
+    }
 
     void OnSelect()
     {
-        Debug.Log("Tap selected");
-        Debug.Break();
+        programController.RegisterWorldTap();
     }
 }

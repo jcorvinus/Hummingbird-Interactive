@@ -15,6 +15,8 @@ public class Bird : MonoBehaviour
     [SerializeField] AudioSource wingsSource;
     [SerializeField] AudioClip song;
     [SerializeField] AudioClip chirp;
+
+    HummingbirdCharacterScript characterController;
     #endregion
 
     #region State Variables
@@ -22,7 +24,7 @@ public class Bird : MonoBehaviour
     /// <summary>If true, bird is flying in an arc.
     /// If false, bird is doing a quick jump to its destination.</summary>
     bool smoothFlight = false;
-
+    Vector3 flightGoal;
     #endregion
 
     #region Debug
@@ -39,6 +41,7 @@ public class Bird : MonoBehaviour
     {
         sphereCollider = GetComponent<SphereCollider>();
         rigidBody = GetComponent<Rigidbody>();
+        characterController = GetComponentInChildren<HummingbirdCharacterScript>();
 	}
 
     void OnEnable()
@@ -108,7 +111,14 @@ public class Bird : MonoBehaviour
         }
     }
 
-    void OnDeselect()
+    public void SendToLocation(Vector3 location)
+    {
+        flightGoal = location;
+        currentState = BirdAIState.FlyingToGoal;
+        characterController.Soar();
+    }
+
+    public void Deselect()
     {
 
     }
@@ -116,5 +126,6 @@ public class Bird : MonoBehaviour
     void OnSelect()
     {
         BirdManager.Instance.SelectBird(this);
+        Debug.Log("Bird selected.");
     }
 }

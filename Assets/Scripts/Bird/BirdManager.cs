@@ -4,10 +4,19 @@ using System.Collections.Generic;
 
 public class BirdManager : MonoBehaviour
 {
+    public delegate void BirdSelectHandler(BirdManager sender, Bird affectedObject);
+    public event BirdSelectHandler BirdSelected;
+    public event BirdSelectHandler SelectionCleared;
+
     public static BirdManager Instance;
 
     List<Bird> birdList;
     Bird selectedBird;
+
+    public Bird SelectedBird
+    {
+        get { return selectedBird; }
+    }
 
     bool hasInitialized = false;
 
@@ -34,8 +43,13 @@ public class BirdManager : MonoBehaviour
 
     public void SelectBird(Bird newSelection)
     {
-        
+        if (selectedBird != null) selectedBird.Deselect();
+        selectedBird = newSelection;
 
+        if(BirdSelected != null)
+        {
+            BirdSelected(this, selectedBird);
+        }
     }
 
     public void AddBird(Bird newBird)
@@ -46,6 +60,14 @@ public class BirdManager : MonoBehaviour
 
     public void RemoveBird(Bird bird)
     {
+        if(selectedBird == bird)
+        {
+            if(SelectionCleared != null)
+            {
+                SelectionCleared(this, null);
+            }
+        }
+
         birdList.Remove(bird);
     }
 }

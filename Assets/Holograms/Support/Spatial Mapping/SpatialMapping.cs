@@ -85,6 +85,8 @@ public class SpatialMapping : MonoBehaviour
                     // Add the surface to our dictionary of known surfaces so
                     // we can interact with it later.
                     surfaces[surfaceId.handle] = surface;
+                    surface.tag = "WorldCollision";
+                    surface.AddComponent<WorldTap>();
                 }
 
                 SurfaceData smsd = new SurfaceData(

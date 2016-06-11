@@ -3,8 +3,16 @@
 public class WorldCursor : MonoBehaviour
 {
     [SerializeField] Color highlightColor = Color.yellow;
+    [SerializeField] Color goToPointColor = Color.magenta;
+    [SerializeField] float upDotCutoff = 0.65f;
     private Color defaultColor;
     private MeshRenderer meshRenderer;
+    private bool birdCanLand = false;
+
+    public bool BirdCanLand
+    {
+        get { return birdCanLand; }
+    }
 
     // Use this for initialization
     void Start()
@@ -26,9 +34,29 @@ public class WorldCursor : MonoBehaviour
 
         if (Physics.Raycast(headPosition, gazeDirection, out hitInfo))
         {
-            // If the raycast hit a hologram...
-            // Display the cursor mesh.
-            meshRenderer.enabled = true;
+            Bird birdCandidate = hitInfo.collider.GetComponent<Bird>();
+
+            if(birdCandidate != null)
+            {
+                meshRenderer.enabled = true;
+
+                // change our cursor color to be 'select new bird' color.
+                meshRenderer.material.color = highlightColor;
+            }
+            else
+            {
+                birdCanLand = (Vector3.Dot(Vector3.up, hitInfo.normal) >= upDotCutoff);
+
+                if (BirdManager.Instance.SelectedBird == null)
+                {
+                    meshRenderer.enabled = false;
+                }
+                else
+                {
+                    meshRenderer.enabled = true;
+                    meshRenderer.material.color = (birdCanLand) ? goToPointColor : Color.red;
+                }
+            }            
 
             // Move thecursor to the point where the raycast hit.
             this.transform.position = hitInfo.point;
