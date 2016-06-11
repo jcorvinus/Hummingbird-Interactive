@@ -14,7 +14,7 @@ public class Bird : MonoBehaviour
     [SerializeField] AudioSource birdMouth;
     [SerializeField] AudioSource wingsSource;
     [SerializeField] AudioClip song;
-    [SerializeField] AudioClip chirp;
+    [SerializeField] AudioClip[] chirpSounds;
 
     HummingbirdCharacterScript characterController;
     #endregion
@@ -25,6 +25,11 @@ public class Bird : MonoBehaviour
     /// If false, bird is doing a quick jump to its destination.</summary>
     bool smoothFlight = false;
     Vector3 flightGoal;
+
+    // audio selection methods
+    float minimumTimeBetweenChirps = 4;
+    float maximumTimeBetweenChirps = 20f;
+    float chirpTimer;
     #endregion
 
     #region Debug
@@ -42,6 +47,8 @@ public class Bird : MonoBehaviour
         sphereCollider = GetComponent<SphereCollider>();
         rigidBody = GetComponent<Rigidbody>();
         characterController = GetComponentInChildren<HummingbirdCharacterScript>();
+
+        
 	}
 
     void OnEnable()
@@ -58,10 +65,27 @@ public class Bird : MonoBehaviour
     {
         BirdManager.Instance.RemoveBird(this);
     }
+
+    void GetNewChirpTime()
+    {
+        chirpTimer = Random.Range(minimumTimeBetweenChirps,
+            maximumTimeBetweenChirps);
+    }
 	
 	// Update is called once per frame
 	void Update ()
     {
+        if(chirpTimer > 0)
+        {
+            chirpTimer -= Time.deltaTime;
+
+            if(chirpTimer < 0)
+            {
+                Chirp();
+                GetNewChirpTime();
+            }
+        }
+
         switch (currentState)
         {
             case BirdAIState.Sitting:
@@ -94,7 +118,7 @@ public class Bird : MonoBehaviour
 
     private void Chirp()
     {
-        birdMouth.clip = chirp;
+        birdMouth.clip = chirpSounds[(int)Random.Range(0, chirpSounds.Length - 1)];
         birdMouth.Play();
     }
 
@@ -116,6 +140,8 @@ public class Bird : MonoBehaviour
         flightGoal = location;
         currentState = BirdAIState.FlyingToGoal;
         characterController.Soar();
+
+        wingsSource.volume = 1;
     }
 
     public void Deselect()
