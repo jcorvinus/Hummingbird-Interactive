@@ -25,6 +25,7 @@ public class Bird : MonoBehaviour
     /// If false, bird is doing a quick jump to its destination.</summary>
     bool smoothFlight = false;
     Vector3 flightGoal;
+    [SerializeField] float turnSpeed = 4f;
 
     // audio selection methods
     float minimumTimeBetweenChirps = 4;
@@ -35,10 +36,12 @@ public class Bird : MonoBehaviour
     #region Debug
     [Header("Debug Variables")]
     public Color birdMeshSelectedColor = Color.red;
+    public Transform debugGoal;
 
     [Header("Debug Commands")]
     public bool BirdSing = false;
     public bool BirdChirp = false;
+    public bool SendBird = false;
     #endregion
 
     // Use this for initialization
@@ -47,9 +50,21 @@ public class Bird : MonoBehaviour
         sphereCollider = GetComponent<SphereCollider>();
         rigidBody = GetComponent<Rigidbody>();
         characterController = GetComponentInChildren<HummingbirdCharacterScript>();
-
-        
 	}
+
+    void Start()
+    {
+        Invoke("SnapToGround", Time.deltaTime);
+    }
+
+    void SnapToGround()
+    {
+        RaycastHit hitInfo;
+        if (Physics.Raycast(transform.position, Vector3.down, out hitInfo, float.PositiveInfinity, ~SpatialMapping.PhysicsRaycastMask))
+        {
+            transform.position = hitInfo.point + (Vector3.up * sphereCollider.radius);
+        }
+    }
 
     void OnEnable()
     {
@@ -102,19 +117,16 @@ public class Bird : MonoBehaviour
                     break;
                 }
 
-                if(smoothFlight)
-                {
+                Vector3 directionToGoal = (flightGoal - transform.position).normalized;
+                transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(directionToGoal, Vector3.up), turnSpeed * Time.deltaTime);
 
-                }
-                else
-                {
-
-                }
                 break;
 
             default:
                 break;
         }
+
+        ProcessDebugCommands();
     }
 
     private void Sing()
@@ -139,6 +151,12 @@ public class Bird : MonoBehaviour
         if(BirdChirp)
         {
             BirdSing = false;
+        }
+
+        if(SendBird)
+        {
+            SendToLocation(debugGoal.position);
+            SendBird = false;
         }
     }
 

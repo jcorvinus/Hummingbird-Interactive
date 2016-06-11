@@ -20,6 +20,15 @@ public class BirdManager : MonoBehaviour
 
     bool hasInitialized = false;
 
+    #region Debug
+    [Header("Debug Variables")]
+    [SerializeField] Bird bird;
+    
+    [Header("Debug Commands")]
+    [SerializeField] bool Select = false;
+    [SerializeField] bool Deselect = false;
+    #endregion
+
     void Awake()
     {
         if (hasInitialized) return;
@@ -38,7 +47,19 @@ public class BirdManager : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-	
+	    // debug
+        if(Select)
+        {
+            SelectBird(bird);
+            Select = false;
+        }
+
+        if(Deselect)
+        {
+            selectedBird = null;
+            if (SelectionCleared != null) SelectionCleared(this, null);
+            Deselect = false;
+        }
 	}
 
     public void SelectBird(Bird newSelection)

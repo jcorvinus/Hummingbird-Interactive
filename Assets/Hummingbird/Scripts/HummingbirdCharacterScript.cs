@@ -29,7 +29,7 @@ public class HummingbirdCharacterScript : MonoBehaviour {
 
 	public void Landing(){
 		hummingbirdAnimator.SetTrigger ("Landing");
-		hummingbirdRigid.useGravity = true;
+		hummingbirdRigid.useGravity = false;
 		isFlying = false;
 	}
 	
