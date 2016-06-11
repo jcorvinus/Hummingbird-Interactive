@@ -1,0 +1,737 @@
+fileFormatVersion: 2
+guid: 2f3d462a0b02e4c4f819c02f9e94ff5b
+timeCreated: 1447541423
+licenseType: Store
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: Armature
+    100002: BeakD
+    100004: BeakU
+    100006: Bone
+    100008: Breast
+    100010: BreastL
+    100012: BreastR
+    100014: DummyMesh
+    100016: EyelidsL
+    100018: EyelidsR
+    100020: EyeR
+    100022: FingerL.001
+    100024: FingerL.002
+    100026: FingerL.003
+    100028: FingerL.004
+    100030: FingerL.005
+    100032: FingerL.006
+    100034: FingerL.007
+    100036: FingerL.008
+    100038: FingerR.001
+    100040: FingerR.002
+    100042: FingerR.003
+    100044: FingerR.004
+    100046: FingerR.005
+    100048: FingerR.006
+    100050: FingerR.007
+    100052: FingerR.008
+    100054: FootL
+    100056: FootR
+    100058: Hair
+    100060: Head
+    100062: //RootNode
+    100064: KneeL
+    100066: KneeR.001
+    100068: Neck
+    100070: Pelvis
+    100072: Pelvis.031
+    100074: RootNode
+    100076: Spine.001
+    100078: Spine.002
+    100080: Tail.001
+    100082: Tail.002
+    100084: TailFetheR.001
+    100086: TailFetherL.001
+    100088: TailFetherL.002
+    100090: TailFetherL.003
+    100092: TailFetherL.004
+    100094: TailFetherL.005
+    100096: TailFetherR.002
+    100098: TailFetherR.003
+    100100: TailFetherR.004
+    100102: TailFetherR.005
+    100104: ThighL
+    100106: ThighR
+    100108: tongue
+    100110: Wing.001
+    100112: Wing.005
+    100114: WingL.002
+    100116: WingL.003
+    100118: WingL.004
+    100120: WingL.006
+    100122: WingL.007
+    100124: WingL.008
+    100126: WingL.009
+    100128: WingR.001
+    100130: WingR.002
+    100132: WingR.003
+    100134: WingR.004
+    100136: WingR.005
+    100138: WingR.006
+    100140: WingR.007
+    100142: WingR.008
+    100144: WingR.009
+    400000: Armature
+    400002: BeakD
+    400004: BeakU
+    400006: Bone
+    400008: Breast
+    400010: BreastL
+    400012: BreastR
+    400014: DummyMesh
+    400016: EyelidsL
+    400018: EyelidsR
+    400020: EyeR
+    400022: FingerL.001
+    400024: FingerL.002
+    400026: FingerL.003
+    400028: FingerL.004
+    400030: FingerL.005
+    400032: FingerL.006
+    400034: FingerL.007
+    400036: FingerL.008
+    400038: FingerR.001
+    400040: FingerR.002
+    400042: FingerR.003
+    400044: FingerR.004
+    400046: FingerR.005
+    400048: FingerR.006
+    400050: FingerR.007
+    400052: FingerR.008
+    400054: FootL
+    400056: FootR
+    400058: Hair
+    400060: Head
+    400062: //RootNode
+    400064: KneeL
+    400066: KneeR.001
+    400068: Neck
+    400070: Pelvis
+    400072: Pelvis.031
+    400074: RootNode
+    400076: Spine.001
+    400078: Spine.002
+    400080: Tail.001
+    400082: Tail.002
+    400084: TailFetheR.001
+    400086: TailFetherL.001
+    400088: TailFetherL.002
+    400090: TailFetherL.003
+    400092: TailFetherL.004
+    400094: TailFetherL.005
+    400096: TailFetherR.002
+    400098: TailFetherR.003
+    400100: TailFetherR.004
+    400102: TailFetherR.005
+    400104: ThighL
+    400106: ThighR
+    400108: tongue
+    400110: Wing.001
+    400112: Wing.005
+    400114: WingL.002
+    400116: WingL.003
+    400118: WingL.004
+    400120: WingL.006
+    400122: WingL.007
+    400124: WingL.008
+    400126: WingL.009
+    400128: WingR.001
+    400130: WingR.002
+    400132: WingR.003
+    400134: WingR.004
+    400136: WingR.005
+    400138: WingR.006
+    400140: WingR.007
+    400142: WingR.008
+    400144: WingR.009
+    7400000: HopForward
+    7400002: HopRight
+    7400004: HopLeft
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: HopForward
+      takeName: Take 001
+      firstFrame: 10
+      lastFrame: 30
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Bone
+        weight: 1
+      - path: Armature/Bone/RootNode
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001/Spine.002
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001/Spine.002/Breast
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001/Spine.002/BreastL
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001/Spine.002/BreastR
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001/Spine.002/Neck
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001/Spine.002/Neck/Head
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001/Spine.002/Neck/Head/BeakD
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001/Spine.002/Neck/Head/BeakU
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001/Spine.002/Neck/Head/EyelidsL
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001/Spine.002/Neck/Head/EyelidsR
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001/Spine.002/Neck/Head/EyeR
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001/Spine.002/Neck/Head/Hair
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001/Spine.002/Neck/Head/Pelvis.031
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001/Spine.002/Neck/Head/tongue
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001/Spine.002/Wing.001
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001/Spine.002/Wing.001/WingL.002
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001/Spine.002/Wing.001/WingL.002/WingL.003
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001/Spine.002/Wing.001/WingL.002/WingL.003/WingL.004
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001/Spine.002/Wing.001/WingL.002/WingL.003/WingL.004/Wing.005
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001/Spine.002/Wing.001/WingL.002/WingL.006
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001/Spine.002/Wing.001/WingL.002/WingL.006/WingL.007
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001/Spine.002/Wing.001/WingL.002/WingL.008
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001/Spine.002/Wing.001/WingL.002/WingL.008/WingL.009
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001/Spine.002/WingR.001
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001/Spine.002/WingR.001/WingR.002
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001/Spine.002/WingR.001/WingR.002/WingR.003
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001/Spine.002/WingR.001/WingR.002/WingR.003/WingR.004
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001/Spine.002/WingR.001/WingR.002/WingR.003/WingR.004/WingR.005
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001/Spine.002/WingR.001/WingR.002/WingR.006
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001/Spine.002/WingR.001/WingR.002/WingR.006/WingR.007
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001/Spine.002/WingR.001/WingR.002/WingR.008
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001/Spine.002/WingR.001/WingR.002/WingR.008/WingR.009
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Tail.001
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Tail.001/Tail.002
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Tail.001/Tail.002/TailFetheR.001
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Tail.001/Tail.002/TailFetherL.001
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Tail.001/Tail.002/TailFetherL.002
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Tail.001/Tail.002/TailFetherL.003
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Tail.001/Tail.002/TailFetherL.004
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Tail.001/Tail.002/TailFetherL.005
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Tail.001/Tail.002/TailFetherR.002
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Tail.001/Tail.002/TailFetherR.003
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Tail.001/Tail.002/TailFetherR.004
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Tail.001/Tail.002/TailFetherR.005
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/ThighL
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/ThighL/KneeL
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/ThighL/KneeL/FootL
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/ThighL/KneeL/FootL/FingerL.001
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/ThighL/KneeL/FootL/FingerL.001/FingerL.002
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/ThighL/KneeL/FootL/FingerL.003
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/ThighL/KneeL/FootL/FingerL.003/FingerL.004
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/ThighL/KneeL/FootL/FingerL.005
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/ThighL/KneeL/FootL/FingerL.005/FingerL.006
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/ThighL/KneeL/FootL/FingerL.007
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/ThighL/KneeL/FootL/FingerL.007/FingerL.008
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/ThighR
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/ThighR/KneeR.001
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/ThighR/KneeR.001/FootR
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/ThighR/KneeR.001/FootR/FingerR.001
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/ThighR/KneeR.001/FootR/FingerR.001/FingerR.002
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/ThighR/KneeR.001/FootR/FingerR.003
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/ThighR/KneeR.001/FootR/FingerR.003/FingerR.004
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/ThighR/KneeR.001/FootR/FingerR.005
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/ThighR/KneeR.001/FootR/FingerR.005/FingerR.006
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/ThighR/KneeR.001/FootR/FingerR.007
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/ThighR/KneeR.001/FootR/FingerR.007/FingerR.008
+        weight: 1
+      - path: DummyMesh
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: HopRight
+      takeName: Take 001
+      firstFrame: 35
+      lastFrame: 55
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Bone
+        weight: 1
+      - path: Armature/Bone/RootNode
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001/Spine.002
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001/Spine.002/Breast
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001/Spine.002/BreastL
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001/Spine.002/BreastR
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001/Spine.002/Neck
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001/Spine.002/Neck/Head
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001/Spine.002/Neck/Head/BeakD
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001/Spine.002/Neck/Head/BeakU
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001/Spine.002/Neck/Head/EyelidsL
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001/Spine.002/Neck/Head/EyelidsR
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001/Spine.002/Neck/Head/EyeR
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001/Spine.002/Neck/Head/Hair
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001/Spine.002/Neck/Head/Pelvis.031
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001/Spine.002/Neck/Head/tongue
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001/Spine.002/Wing.001
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001/Spine.002/Wing.001/WingL.002
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001/Spine.002/Wing.001/WingL.002/WingL.003
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001/Spine.002/Wing.001/WingL.002/WingL.003/WingL.004
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001/Spine.002/Wing.001/WingL.002/WingL.003/WingL.004/Wing.005
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001/Spine.002/Wing.001/WingL.002/WingL.006
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001/Spine.002/Wing.001/WingL.002/WingL.006/WingL.007
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001/Spine.002/Wing.001/WingL.002/WingL.008
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001/Spine.002/Wing.001/WingL.002/WingL.008/WingL.009
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001/Spine.002/WingR.001
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001/Spine.002/WingR.001/WingR.002
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001/Spine.002/WingR.001/WingR.002/WingR.003
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001/Spine.002/WingR.001/WingR.002/WingR.003/WingR.004
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001/Spine.002/WingR.001/WingR.002/WingR.003/WingR.004/WingR.005
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001/Spine.002/WingR.001/WingR.002/WingR.006
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001/Spine.002/WingR.001/WingR.002/WingR.006/WingR.007
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001/Spine.002/WingR.001/WingR.002/WingR.008
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001/Spine.002/WingR.001/WingR.002/WingR.008/WingR.009
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Tail.001
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Tail.001/Tail.002
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Tail.001/Tail.002/TailFetheR.001
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Tail.001/Tail.002/TailFetherL.001
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Tail.001/Tail.002/TailFetherL.002
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Tail.001/Tail.002/TailFetherL.003
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Tail.001/Tail.002/TailFetherL.004
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Tail.001/Tail.002/TailFetherL.005
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Tail.001/Tail.002/TailFetherR.002
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Tail.001/Tail.002/TailFetherR.003
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Tail.001/Tail.002/TailFetherR.004
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Tail.001/Tail.002/TailFetherR.005
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/ThighL
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/ThighL/KneeL
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/ThighL/KneeL/FootL
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/ThighL/KneeL/FootL/FingerL.001
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/ThighL/KneeL/FootL/FingerL.001/FingerL.002
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/ThighL/KneeL/FootL/FingerL.003
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/ThighL/KneeL/FootL/FingerL.003/FingerL.004
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/ThighL/KneeL/FootL/FingerL.005
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/ThighL/KneeL/FootL/FingerL.005/FingerL.006
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/ThighL/KneeL/FootL/FingerL.007
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/ThighL/KneeL/FootL/FingerL.007/FingerL.008
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/ThighR
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/ThighR/KneeR.001
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/ThighR/KneeR.001/FootR
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/ThighR/KneeR.001/FootR/FingerR.001
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/ThighR/KneeR.001/FootR/FingerR.001/FingerR.002
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/ThighR/KneeR.001/FootR/FingerR.003
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/ThighR/KneeR.001/FootR/FingerR.003/FingerR.004
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/ThighR/KneeR.001/FootR/FingerR.005
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/ThighR/KneeR.001/FootR/FingerR.005/FingerR.006
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/ThighR/KneeR.001/FootR/FingerR.007
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/ThighR/KneeR.001/FootR/FingerR.007/FingerR.008
+        weight: 1
+      - path: DummyMesh
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: HopLeft
+      takeName: Take 001
+      firstFrame: 60
+      lastFrame: 80
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Bone
+        weight: 1
+      - path: Armature/Bone/RootNode
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001/Spine.002
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001/Spine.002/Breast
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001/Spine.002/BreastL
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001/Spine.002/BreastR
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001/Spine.002/Neck
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001/Spine.002/Neck/Head
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001/Spine.002/Neck/Head/BeakD
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001/Spine.002/Neck/Head/BeakU
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001/Spine.002/Neck/Head/EyelidsL
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001/Spine.002/Neck/Head/EyelidsR
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001/Spine.002/Neck/Head/EyeR
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001/Spine.002/Neck/Head/Hair
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001/Spine.002/Neck/Head/Pelvis.031
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001/Spine.002/Neck/Head/tongue
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001/Spine.002/Wing.001
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001/Spine.002/Wing.001/WingL.002
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001/Spine.002/Wing.001/WingL.002/WingL.003
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001/Spine.002/Wing.001/WingL.002/WingL.003/WingL.004
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001/Spine.002/Wing.001/WingL.002/WingL.003/WingL.004/Wing.005
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001/Spine.002/Wing.001/WingL.002/WingL.006
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001/Spine.002/Wing.001/WingL.002/WingL.006/WingL.007
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001/Spine.002/Wing.001/WingL.002/WingL.008
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001/Spine.002/Wing.001/WingL.002/WingL.008/WingL.009
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001/Spine.002/WingR.001
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001/Spine.002/WingR.001/WingR.002
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001/Spine.002/WingR.001/WingR.002/WingR.003
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001/Spine.002/WingR.001/WingR.002/WingR.003/WingR.004
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001/Spine.002/WingR.001/WingR.002/WingR.003/WingR.004/WingR.005
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001/Spine.002/WingR.001/WingR.002/WingR.006
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001/Spine.002/WingR.001/WingR.002/WingR.006/WingR.007
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001/Spine.002/WingR.001/WingR.002/WingR.008
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Spine.001/Spine.002/WingR.001/WingR.002/WingR.008/WingR.009
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Tail.001
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Tail.001/Tail.002
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Tail.001/Tail.002/TailFetheR.001
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Tail.001/Tail.002/TailFetherL.001
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Tail.001/Tail.002/TailFetherL.002
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Tail.001/Tail.002/TailFetherL.003
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Tail.001/Tail.002/TailFetherL.004
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Tail.001/Tail.002/TailFetherL.005
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Tail.001/Tail.002/TailFetherR.002
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Tail.001/Tail.002/TailFetherR.003
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Tail.001/Tail.002/TailFetherR.004
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/Tail.001/Tail.002/TailFetherR.005
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/ThighL
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/ThighL/KneeL
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/ThighL/KneeL/FootL
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/ThighL/KneeL/FootL/FingerL.001
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/ThighL/KneeL/FootL/FingerL.001/FingerL.002
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/ThighL/KneeL/FootL/FingerL.003
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/ThighL/KneeL/FootL/FingerL.003/FingerL.004
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/ThighL/KneeL/FootL/FingerL.005
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/ThighL/KneeL/FootL/FingerL.005/FingerL.006
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/ThighL/KneeL/FootL/FingerL.007
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/ThighL/KneeL/FootL/FingerL.007/FingerL.008
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/ThighR
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/ThighR/KneeR.001
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/ThighR/KneeR.001/FootR
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/ThighR/KneeR.001/FootR/FingerR.001
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/ThighR/KneeR.001/FootR/FingerR.001/FingerR.002
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/ThighR/KneeR.001/FootR/FingerR.003
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/ThighR/KneeR.001/FootR/FingerR.003/FingerR.004
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/ThighR/KneeR.001/FootR/FingerR.005
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/ThighR/KneeR.001/FootR/FingerR.005/FingerR.006
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/ThighR/KneeR.001/FootR/FingerR.007
+        weight: 1
+      - path: Armature/Bone/RootNode/Pelvis/ThighR/KneeR.001/FootR/FingerR.007/FingerR.008
+        weight: 1
+      - path: DummyMesh
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: RootNode
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
