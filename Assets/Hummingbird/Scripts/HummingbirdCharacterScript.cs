@@ -15,7 +15,7 @@ public class HummingbirdCharacterScript : MonoBehaviour {
 	void Start () {
 		hummingbirdAnimator = GetComponent<Animator> ();
 		hummingbirdAnimator.speed = animSpeed;
-		hummingbirdRigid = GetComponent<Rigidbody> ();
+		hummingbirdRigid = GetComponentInParent<Rigidbody> ();
 	}	
 
 	public void AnimSpeedSet(float speed){

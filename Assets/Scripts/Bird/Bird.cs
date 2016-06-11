@@ -95,6 +95,13 @@ public class Bird : MonoBehaviour
                 break;
 
             case BirdAIState.FlyingToGoal:
+                if(Vector3.Distance(transform.position, flightGoal) < 0.01f)
+                {
+                    characterController.Landing();
+                    currentState = BirdAIState.Sitting;
+                    break;
+                }
+
                 if(smoothFlight)
                 {
 
@@ -142,6 +149,8 @@ public class Bird : MonoBehaviour
         characterController.Soar();
 
         wingsSource.volume = 1;
+
+        smoothFlight = true;
     }
 
     public void Deselect()
