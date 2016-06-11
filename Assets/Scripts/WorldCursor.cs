@@ -2,6 +2,8 @@
 
 public class WorldCursor : MonoBehaviour
 {
+    [SerializeField] Color highlightColor = Color.yellow;
+    private Color defaultColor;
     private MeshRenderer meshRenderer;
 
     // Use this for initialization
@@ -9,6 +11,7 @@ public class WorldCursor : MonoBehaviour
     {
         // Grab the mesh renderer that's on the same object as this script.
         meshRenderer = this.gameObject.GetComponentInChildren<MeshRenderer>();
+        defaultColor = meshRenderer.material.color;
     }
 
     // Update is called once per frame

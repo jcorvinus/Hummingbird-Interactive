@@ -57,6 +57,9 @@ public class GazeGestureManager : MonoBehaviour
         {
             recognizer.CancelGestures();
             recognizer.StartCapturingGestures();
+
+            if (oldFocusObject != null) oldFocusObject.SendMessageUpwards("OnHoverEnd");
+            if (FocusedObject != null) FocusedObject.SendMessageUpwards("OnHoverStart");
         }
     }
 }
