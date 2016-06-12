@@ -3036,8 +3036,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d21d7ab8641543b392af76614493464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hummingbirdAnimator: {fileID: 0}
+  hummingbirdAnimator: {fileID: 95000012812315488}
   animSpeed: 5
+  hummingbirdRigid: {fileID: 54000012840487720}
   isFlying: 0
   forwardSpeed: 0.35
   hopSpeed: 0.01
@@ -3080,7 +3081,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e161114e46a548d6978a354303a68f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hummingbirdCharacter: {fileID: 0}
+  hummingbirdCharacter: {fileID: 114000013950809908}
 --- !u!114 &114000014126217008
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -13,6 +13,10 @@ public class ProgramController : MonoBehaviour
     [SerializeField] WorldCursor cursor;
     [SerializeField] SpatialMapping mapping;
     [SerializeField] HoloToolkit.Unity.TextToSpeechManager textMan;
+    [SerializeField] GameObject birdPrefab;
+    [SerializeField] bool chasing = false;
+   
+
 
     #region Speech Stuff
     KeywordRecognizer keywordRecognizer = null;
@@ -22,6 +26,11 @@ public class ProgramController : MonoBehaviour
     #region Debug
     [Header("Debug Commands")]
     [SerializeField] bool returnToUser = false;
+    [SerializeField] bool makeBird = false;
+    [SerializeField] bool tenBirds = false;
+    [SerializeField] bool killAllBirds = false;
+    [SerializeField] bool chaseMe = false;
+    [SerializeField] bool stopChasingMe = false;
     #endregion
 
     void Awake()
@@ -85,12 +94,78 @@ public class ProgramController : MonoBehaviour
             }
         });
 
+        keywords.Add("Make Bird", () =>
+        {
+            MakeBird();
+        });
+
+        keywords.Add("Make Ten Birds", () =>
+        {
+            MakeTenBirds();
+        });
+
+        keywords.Add("Kill All Birds", () =>
+        {
+            KillAllBirds();
+        });
+
+        keywords.Add("Chase Me", () =>
+        {
+            ChaseMe();
+        });
+
+        keywords.Add("Stop Chasing Me", () =>
+        {
+            StopChasingMe();
+        });
+
+
+
         // Tell the KeywordRecognizer about our keywords.
         keywordRecognizer = new KeywordRecognizer(keywords.Keys.ToArray());
 
         // Register a callback for the KeywordRecognizer and start recognizing!
         keywordRecognizer.OnPhraseRecognized += KeywordRecognizer_OnPhraseRecognized;
         keywordRecognizer.Start();
+    }
+
+    public void ChaseMe()
+    {
+        chasing = true;
+    }
+
+    public void StopChasingMe()
+    {
+        chasing = false;
+    }
+
+    public void KillAllBirds()
+    {
+        while (BirdManager.Instance.DestroyABird())
+        {
+            //
+        }
+    }
+
+
+
+    private void MakeBird()
+    {
+        Bird b = Instantiate(birdPrefab).GetComponent<Bird>();
+        b.transform.position = new Vector3(0.0f, 0.2f, 1.4f);
+//        BirdManager.Instance.SelectBird(b);
+        //BirdManager.Instance.SelectedBird.LandAtLocation(new Vector3(0,0,0));
+    }
+
+    private void MakeTenBirds()
+    {
+        for (int i = 0; i < 10; i++)
+        {
+            
+            Bird b = Instantiate(birdPrefab).GetComponent<Bird>();
+            
+            b.transform.position = new Vector3(UnityEngine.Random.Range(-1.0f, 1.0f), UnityEngine.Random.Range(-1.0f, 1.0f), UnityEngine.Random.Range(1.0f, 2.0f));
+        }
     }
 
     private void SummonBird()
@@ -127,7 +202,40 @@ public class ProgramController : MonoBehaviour
             SummonBird();
             returnToUser = false;
         }
-	}
+        if (makeBird)
+        {
+            MakeBird();
+            makeBird = false;
+        }
+        if (tenBirds)
+        {
+            MakeTenBirds();
+            tenBirds = false;
+        }
+        if (killAllBirds)
+        {
+            KillAllBirds();
+            killAllBirds = false;
+        }
+        if (chaseMe)
+        {
+            ChaseMe();
+            chaseMe = false;
+        }
+        if (stopChasingMe)
+        {
+            StopChasingMe();
+            stopChasingMe = false;
+        }
+
+        if (chasing)
+        {
+            Vector3 pointInFrontOfuser = Camera.main.transform.position + Camera.main.transform.forward + (Vector3.up * -0.1f);
+            BirdManager.Instance.SendAllBirdsToLocation(pointInFrontOfuser);
+            
+
+        }
+    }
 
     private void LandSelectedBirdAtLocation(Vector3 location)
     {
