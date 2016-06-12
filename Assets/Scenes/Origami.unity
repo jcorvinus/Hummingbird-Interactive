@@ -2603,7 +2603,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  goToPointColor: {r: 1, g: 0, b: 1, a: 1}
+  goToPointColor: {r: 0, g: 1, b: 0.048275948, a: 1}
   upDotCutoff: 0.65
 --- !u!1001 &2049191956
 Prefab:
