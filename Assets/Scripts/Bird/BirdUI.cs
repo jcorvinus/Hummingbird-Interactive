@@ -19,7 +19,12 @@ public class BirdUI : MonoBehaviour
     Vector3 helpWindowInitialScale;
 
     Coroutine showWindowCoroutine;
+    bool showCoroutineStarted = false;
+    bool showCoroutineFinished = false;
+
     Coroutine hideWindowCoroutine;
+    bool hideCoroutineStarted = false;
+    bool hideCoroutineFinished = false;
 
     Coroutine showVideoCoroutine;
     Coroutine hideVideoCoroutine;
@@ -47,8 +52,30 @@ public class BirdUI : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        HelpWindow.transform.localScale = (!hovering) ? Vector3.Lerp(Vector3.zero, helpWindowInitialScale, WindowScaleSpeed * Time.deltaTime) :
-            Vector3.Lerp(helpWindowInitialScale, Vector3.zero, WindowScaleSpeed * Time.deltaTime);
+        HelpWindow.transform.localScale = (hovering) ? Vector3.Lerp(HelpWindow.transform.localScale, helpWindowInitialScale, WindowScaleSpeed * Time.deltaTime) :
+            Vector3.Lerp(HelpWindow.transform.localScale, Vector3.zero, WindowScaleSpeed * Time.deltaTime);
+
+        if (hideCoroutineStarted)
+        {
+            if (hideCoroutineFinished)
+            {
+                hideCoroutineFinished = false;
+                hideCoroutineStarted = false;
+
+                if (HideTweenFinished != null) HideTweenFinished(this);
+            }
+        }
+
+        if (showCoroutineStarted)
+        {
+            if (showCoroutineFinished)
+            {
+                showCoroutineStarted = false;
+                showCoroutineFinished = false;
+
+                if (ShowTweenFinished != null) ShowTweenFinished(this);
+            }
+        }
 
         ProcessDebugCommands();
     }
@@ -93,17 +120,16 @@ public class BirdUI : MonoBehaviour
     #region Video Methods
     public void ShowVideo()
     {
-        // todo: we need to hook into the hide info display event
-        // and only show this once the hiding of the info display is done
         HideTweenFinished += Info_HideTweenFinished;
         hideWindowCoroutine = StartCoroutine(HideWindowCoroutine(UIWindow));
-
         UIAudio.Instance.PlayClickSound();
     }
 
     private void Info_HideTweenFinished(BirdUI sender)
     {
         HideTweenFinished -= Info_HideTweenFinished;
+
+        VideoWindow.gameObject.SetActive(true);
         if (hideVideoCoroutine != null) StopCoroutine(hideVideoCoroutine);
         showVideoCoroutine = StartCoroutine(ShowWindowCoroutine(VideoWindow));
     }
@@ -126,6 +152,7 @@ public class BirdUI : MonoBehaviour
     #region Info window show / hide
     IEnumerator ShowWindowCoroutine(Transform target)
     {
+        showCoroutineStarted = true;
         float timer = 0;
         float tValue = 0;
 
@@ -142,12 +169,15 @@ public class BirdUI : MonoBehaviour
         }
 
         target.transform.localScale = initialScale;
-        if (ShowTweenFinished != null) ShowTweenFinished(this);
+        showCoroutineFinished = false;
         yield break;
     }
 
     IEnumerator HideWindowCoroutine(Transform target)
     {
+        Debug.Log("Hiding :" + target.name);
+        hideCoroutineStarted = true;
+
         float timer = 0;
         float tValue = 0;
 
@@ -163,7 +193,7 @@ public class BirdUI : MonoBehaviour
 
         target.gameObject.SetActive(false);
         target.transform.localScale = Vector3.zero;
-        if (HideTweenFinished != null) HideTweenFinished(this);
+        hideCoroutineFinished = true;
         yield break;
     }
 
@@ -173,7 +203,6 @@ public class BirdUI : MonoBehaviour
 
         HelpWindow.gameObject.SetActive(false);
         showWindowCoroutine = StartCoroutine(ShowWindowCoroutine(UIWindow));
-
         UIAudio.Instance.PlayClickSound();
     }
     #endregion

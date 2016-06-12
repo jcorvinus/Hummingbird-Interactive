@@ -51,7 +51,7 @@ public class BirdManager : MonoBehaviour
 	    // debug
         if(Select)
         {
-            SelectBird(bird);
+            bird.SendMessage("OnSelect");
             Select = false;
         }
 
