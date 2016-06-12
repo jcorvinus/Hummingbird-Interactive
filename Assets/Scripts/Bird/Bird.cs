@@ -41,7 +41,6 @@ public class Bird : MonoBehaviour
 
     #region Debug
     [Header("Debug Variables")]
-    public Color birdMeshSelectedColor = Color.red;
     public Transform debugGoal;
 
     [Header("Debug Commands")]
