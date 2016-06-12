@@ -26,8 +26,6 @@ public class ProgramController : MonoBehaviour
 
     void Awake()
     {
-        BirdManager.Instance.BirdSelected += Instance_BirdSelected;
-
         keywords.Add("Select this bird", () =>
         {
             var focusObject = GazeGestureManager.Instance.FocusedObject;
@@ -113,11 +111,6 @@ public class ProgramController : MonoBehaviour
     {
         sender.StateChanged -= SelectedBird_ArrivedAtPlayer;
         sender.FloatInPlace();
-    }
-
-    private void Instance_BirdSelected(BirdManager sender, Bird affectedObject)
-    {
-        mapping.DrawVisualMeshes = true;
     }
 
     // Use this for initialization
