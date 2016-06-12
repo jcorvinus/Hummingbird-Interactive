@@ -13,6 +13,10 @@ public class ProgramController : MonoBehaviour
     [SerializeField] WorldCursor cursor;
     [SerializeField] SpatialMapping mapping;
     [SerializeField] HoloToolkit.Unity.TextToSpeechManager textMan;
+    [SerializeField] GameObject birdPrefab;
+    [SerializeField] int numBirdsSpawned = 1;
+    [SerializeField] Stack<GameObject> spawnedBirds = new Stack< GameObject >();
+    [SerializeField] bool chasing = false;
 
     #region Speech Stuff
     KeywordRecognizer keywordRecognizer = null;
@@ -22,6 +26,14 @@ public class ProgramController : MonoBehaviour
     #region Debug
     [Header("Debug Commands")]
     [SerializeField] bool returnToUser = false;
+    [SerializeField] bool bigBird = false;
+    [SerializeField] bool littleBird = false;
+    [SerializeField] bool tenBirds = false;
+    [SerializeField] bool deadBird = false;
+    [SerializeField] bool killAllBirds = false;
+    [SerializeField] bool chaseMe = false;
+    [SerializeField] bool stopChasingMe = false;
+
     #endregion
 
     void Awake()
@@ -63,6 +75,45 @@ public class ProgramController : MonoBehaviour
             SummonBird();
         });
 
+        keywords.Add("Big bird", () =>
+        {
+            BigBird();
+        });
+        keywords.Add("Little bird", () =>
+        {
+            LittleBird();
+        });
+
+        keywords.Add("Ten birds", () =>
+        {
+            TenBirds();
+        });
+
+
+        keywords.Add("Dead bird", () =>
+        {
+            DeadBird();
+        });
+
+        keywords.Add("Kill all birds", () =>
+        {
+            KillAllBirds();
+        });
+
+        keywords.Add("Chase me", () =>
+        {
+            ChaseMe();
+        });
+
+        keywords.Add("Stop Chase", () =>
+        {
+            StopChasingMe();
+        });
+
+
+
+
+
         // Tell the KeywordRecognizer about our keywords.
         keywordRecognizer = new KeywordRecognizer(keywords.Keys.ToArray());
 
@@ -103,7 +154,52 @@ public class ProgramController : MonoBehaviour
             SummonBird();
             returnToUser = false;
         }
-	}
+        if (bigBird)
+        {
+            BigBird();
+            bigBird = false;
+        }
+        if (littleBird)
+        {
+            LittleBird();
+            littleBird = false;
+        }
+        if (deadBird)
+        {
+            DeadBird();
+            deadBird = false;
+        }
+        if (tenBirds)
+        {
+            TenBirds();
+            tenBirds = false;
+        }
+        if (killAllBirds)
+        {
+            KillAllBirds();
+            killAllBirds = false;
+        }
+        if (chaseMe)
+        {
+            ChaseMe();
+            chaseMe = false;
+        }
+        if (stopChasingMe)
+        {
+            StopChasingMe();
+            stopChasingMe = true;
+        }
+
+        if (chasing)
+        {
+            Vector3 pointInFrontOfuser = Camera.main.transform.position + Camera.main.transform.forward + (Vector3.up * -0.1f);
+            foreach (GameObject bird in spawnedBirds)
+            {
+                bird.GetComponent<Bird>().SendToLocation(pointInFrontOfuser);
+            }
+        }
+
+    }
 
     private void SendSelectedBirdToLocation(Vector3 location)
     {
@@ -115,6 +211,64 @@ public class ProgramController : MonoBehaviour
         else
         {
             textMan.SpeakText("Bird cannot land there.");
+        }
+    }
+
+    private void SpawnBird(Vector3 scale)
+    {
+        GameObject b = Instantiate(birdPrefab);
+        int x = numBirdsSpawned % 3;
+        int y = numBirdsSpawned / 3;
+        numBirdsSpawned++;
+        b.transform.Translate(x * 0.25f, y *0.25f, 0);
+        b.transform.localScale = scale;
+        spawnedBirds.Push(b);
+    }
+    public void BigBird()
+    {
+        SpawnBird(new Vector3(2, 2, 2));      
+    }
+
+    public void LittleBird()
+    {
+        SpawnBird(new Vector3(0.5f, 0.5f, 0.5f));
+    }
+
+    public void TenBirds()
+    {
+        for (int i = 0; i < 10; i++)
+        {
+            SpawnBird(new Vector3(1.0f, 1.0f, 1.0f));
+        }
+    }
+
+    public void ChaseMe()
+    {
+        chasing = true;
+        
+    }
+
+    public void StopChasingMe()
+    {
+        chasing = false;
+    }
+
+    public void DeadBird()
+    {
+        if (spawnedBirds.Count > 0)
+        {
+            GameObject kill_this_one = spawnedBirds.Pop();
+            DestroyObject(kill_this_one);
+            numBirdsSpawned--;
+        }
+    }
+    public void KillAllBirds()
+    {
+        while (spawnedBirds.Count > 0)
+        {
+            GameObject kill_this_one = spawnedBirds.Pop();
+            DestroyObject(kill_this_one);
+            numBirdsSpawned--;
         }
     }
 
