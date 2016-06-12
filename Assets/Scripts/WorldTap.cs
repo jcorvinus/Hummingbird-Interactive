@@ -13,5 +13,6 @@ public class WorldTap : MonoBehaviour
     void OnSelect()
     {
         programController.RegisterWorldTap();
+        Debug.Log("World Tap occured.");
     }
 }

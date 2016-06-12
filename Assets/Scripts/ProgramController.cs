@@ -46,11 +46,23 @@ public class ProgramController : MonoBehaviour
             }
         });
 
+        keywords.Add("Land over there", () =>
+        {
+            if (BirdManager.Instance.SelectedBird != null)
+            {
+                LandSelectedBirdAtLocation(cursor.transform.position);
+            }
+            else
+            {
+                textMan.SpeakText("No bird selected");
+            }
+        });
+
         keywords.Add("Fly over there", () =>
         {
             if (BirdManager.Instance.SelectedBird != null)
             {
-                SendSelectedBirdToLocation(cursor.transform.position);
+                FlyBirdToLocation();
             }
             else
             {
@@ -61,6 +73,18 @@ public class ProgramController : MonoBehaviour
         keywords.Add("Come to me", () =>
         {
             SummonBird();
+        });
+
+        keywords.Add("Sing to me", () =>
+        {
+            if (BirdManager.Instance.SelectedBird != null)
+            {
+                BirdManager.Instance.SelectedBird.Sing();
+            }
+            else
+            {
+                textMan.SpeakText("No bird selected");
+            }
         });
 
         // Tell the KeywordRecognizer about our keywords.
@@ -75,13 +99,20 @@ public class ProgramController : MonoBehaviour
     {
         if (BirdManager.Instance.SelectedBird != null)
         {
-            Vector3 pointInFrontOfuser = Camera.main.transform.position + Camera.main.transform.forward + (Vector3.up * -0.1f);
-            BirdManager.Instance.SelectedBird.LandAtLocation(pointInFrontOfuser);
+            Vector3 pointInFrontOfuser = Camera.main.transform.position + Camera.main.transform.forward * 1.15f + (Vector3.up * -0.04f);
+            BirdManager.Instance.SelectedBird.FlyToLocation(pointInFrontOfuser);
+            BirdManager.Instance.SelectedBird.StateChanged += SelectedBird_ArrivedAtPlayer;
         }
         else
         {
             textMan.SpeakText("No bird selected");
         }
+    }
+
+    private void SelectedBird_ArrivedAtPlayer(Bird sender, Bird.BirdAIState currentState, Bird.BirdAIState oldState)
+    {
+        sender.StateChanged -= SelectedBird_ArrivedAtPlayer;
+        sender.FloatInPlace();
     }
 
     private void Instance_BirdSelected(BirdManager sender, Bird affectedObject)
@@ -105,7 +136,7 @@ public class ProgramController : MonoBehaviour
         }
 	}
 
-    private void SendSelectedBirdToLocation(Vector3 location)
+    private void LandSelectedBirdAtLocation(Vector3 location)
     {
         if (cursor.BirdCanLand)
         {
@@ -118,11 +149,18 @@ public class ProgramController : MonoBehaviour
         }
     }
 
+    private void FlyBirdToLocation()
+    {
+        BirdManager.Instance.SelectedBird.FlyToLocation(Camera.main.transform.position
+            + Camera.main.transform.forward * 2.3f);
+    }
+
     public void RegisterWorldTap()
     {
         if(BirdManager.Instance.SelectedBird != null)
         {
-            SendSelectedBirdToLocation(cursor.transform.position);
+            textMan.SpeakText("Tap command successful");
+            LandSelectedBirdAtLocation(cursor.transform.position);
         }
     }
 

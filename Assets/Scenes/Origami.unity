@@ -803,16 +803,46 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 114000011404275110, guid: 1c0c8bc812de65f4daf68e5c518cfb8f,
+    - target: {fileID: 114000013261369228, guid: 1c0c8bc812de65f4daf68e5c518cfb8f,
         type: 2}
-      propertyPath: debugGoal
+      propertyPath: target
       value: 
-      objectReference: {fileID: 2091675144}
+      objectReference: {fileID: 224566525}
     - target: {fileID: 223000011888241110, guid: 1c0c8bc812de65f4daf68e5c518cfb8f,
         type: 2}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 224566524}
+    - target: {fileID: 114000011404275110, guid: 1c0c8bc812de65f4daf68e5c518cfb8f,
+        type: 2}
+      propertyPath: debugGoal
+      value: 
+      objectReference: {fileID: 2091675144}
+    - target: {fileID: 223000011848623396, guid: 1c0c8bc812de65f4daf68e5c518cfb8f,
+        type: 2}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 224566524}
+    - target: {fileID: 224000013782476080, guid: 1c0c8bc812de65f4daf68e5c518cfb8f,
+        type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224000013782476080, guid: 1c0c8bc812de65f4daf68e5c518cfb8f,
+        type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224000013782476080, guid: 1c0c8bc812de65f4daf68e5c518cfb8f,
+        type: 2}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011359140524, guid: 1c0c8bc812de65f4daf68e5c518cfb8f,
+        type: 2}
+      propertyPath: WindowScaleSpeed
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1c0c8bc812de65f4daf68e5c518cfb8f, type: 2}
   m_IsPrefabParent: 0

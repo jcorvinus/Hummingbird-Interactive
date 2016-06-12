@@ -19,6 +19,7 @@ public class Bird : MonoBehaviour
     [SerializeField] AudioClip[] chirpSounds;
 
     HummingbirdCharacterScript characterController;
+    BirdUI birdUI;
     #endregion
 
     #region State Variables
@@ -47,6 +48,7 @@ public class Bird : MonoBehaviour
     public bool BirdSing = false;
     public bool BirdChirp = false;
     public bool LandBird = false;
+    public bool FlyBird = false;
     #endregion
 
     // Use this for initialization
@@ -55,6 +57,7 @@ public class Bird : MonoBehaviour
         sphereCollider = GetComponent<SphereCollider>();
         rigidBody = GetComponent<Rigidbody>();
         characterController = GetComponentInChildren<HummingbirdCharacterScript>();
+        birdUI = GetComponent<BirdUI>();
 	}
 
     void Start()
@@ -120,11 +123,20 @@ public class Bird : MonoBehaviour
             case BirdAIState.FlyingToGoal:
                 if (landAtDestination)
                 {
-                    if (Vector3.Distance(transform.position, flightGoal) < 0.01f)
+                    if(Vector3.Distance(transform.position, flightGoal) < 0.8)
+                    {
+                        forwardSpeed = Mathf.Lerp(0.3f, 0.1f,
+                            Mathf.InverseLerp(0, Vector3.Distance(transform.position, flightGoal), 0.8f));
+
+                        characterController.forwardSpeed = forwardSpeed;
+                    }
+
+                    if (Vector3.Distance(transform.position, flightGoal) < 0.1f)
                     {
                         characterController.Landing();
                         currentState = BirdAIState.Sitting;
                         if (StateChanged != null) StateChanged(this, BirdAIState.Sitting, BirdAIState.FlyingToGoal);
+                        Invoke("DebugLanding", Time.deltaTime);
                         break;
                     }
                 }
@@ -140,7 +152,12 @@ public class Bird : MonoBehaviour
         ProcessDebugCommands();
     }
 
-    private void Sing()
+    void DebugLanding()
+    {
+        characterController.hummingbirdAnimator.SetTrigger("Landing");
+    }
+
+    public void Sing()
     {
         birdMouth.clip = song;
         birdMouth.Play();
@@ -168,6 +185,12 @@ public class Bird : MonoBehaviour
         {
             LandAtLocation(debugGoal.position);
             LandBird = false;
+        }
+
+        if(FlyBird)
+        {
+            FlyToLocation(debugGoal.transform.position);
+            FlyBird = false;
         }
     }
 
@@ -220,12 +243,19 @@ public class Bird : MonoBehaviour
 
     public void Deselect()
     {
-
+        birdUI.CloseAll();
     }
 
     void OnSelect()
     {
         BirdManager.Instance.SelectBird(this);
-        Debug.Log("Bird selected.");
+        birdUI.ShowInfoDisplay();
+        StateChanged += Bird_DisableDisplayOnStateChange;
+    }
+
+    private void Bird_DisableDisplayOnStateChange(Bird sender, BirdAIState currentState, BirdAIState oldState)
+    {
+        sender.StateChanged -= Bird_DisableDisplayOnStateChange;
+        birdUI.CloseAll();
     }
 }
