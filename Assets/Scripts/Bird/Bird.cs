@@ -3,6 +3,8 @@ using System.Collections;
 
 public class Bird : MonoBehaviour
 {
+    public delegate void BirdStateChangeHandler(Bird sender, BirdAIState currentState, BirdAIState oldState);
+    public event BirdStateChangeHandler StateChanged;
 
     // defines
     public enum BirdAIState { Sitting, Floating, FlyingToGoal }
@@ -23,14 +25,17 @@ public class Bird : MonoBehaviour
     [SerializeField] BirdAIState currentState = BirdAIState.Sitting;
     /// <summary>If true, bird is flying in an arc.
     /// If false, bird is doing a quick jump to its destination.</summary>
-    bool smoothFlight = false;
+    bool landAtDestination = false;
     Vector3 flightGoal;
     [SerializeField] float turnSpeed = 4f;
+    [SerializeField] float forwardSpeed = 0.35f;
 
     // audio selection methods
     float minimumTimeBetweenChirps = 4;
     float maximumTimeBetweenChirps = 20f;
     float chirpTimer;
+
+    bool hasSnapped = false;
     #endregion
 
     #region Debug
@@ -41,7 +46,7 @@ public class Bird : MonoBehaviour
     [Header("Debug Commands")]
     public bool BirdSing = false;
     public bool BirdChirp = false;
-    public bool SendBird = false;
+    public bool LandBird = false;
     #endregion
 
     // Use this for initialization
@@ -54,16 +59,19 @@ public class Bird : MonoBehaviour
 
     void Start()
     {
-        Invoke("SnapToGround", Time.deltaTime);
+        characterController.Soar();
+        characterController.ForwardSpeedSet(0f);
     }
 
-    void SnapToGround()
+    public bool SnapToGround()
     {
         RaycastHit hitInfo;
-        if (Physics.Raycast(transform.position, Vector3.down, out hitInfo, float.PositiveInfinity, ~SpatialMapping.PhysicsRaycastMask))
+        if (Physics.Raycast(transform.position, Vector3.down, out hitInfo, float.PositiveInfinity))
         {
             transform.position = hitInfo.point + (Vector3.up * sphereCollider.radius);
+            return true;
         }
+        else return false;
     }
 
     void OnEnable()
@@ -110,16 +118,19 @@ public class Bird : MonoBehaviour
                 break;
 
             case BirdAIState.FlyingToGoal:
-                if(Vector3.Distance(transform.position, flightGoal) < 0.01f)
+                if (landAtDestination)
                 {
-                    characterController.Landing();
-                    currentState = BirdAIState.Sitting;
-                    break;
+                    if (Vector3.Distance(transform.position, flightGoal) < 0.01f)
+                    {
+                        characterController.Landing();
+                        currentState = BirdAIState.Sitting;
+                        if (StateChanged != null) StateChanged(this, BirdAIState.Sitting, BirdAIState.FlyingToGoal);
+                        break;
+                    }
                 }
 
                 Vector3 directionToGoal = (flightGoal - transform.position).normalized;
                 transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(directionToGoal, Vector3.up), turnSpeed * Time.deltaTime);
-
                 break;
 
             default:
@@ -153,22 +164,58 @@ public class Bird : MonoBehaviour
             BirdSing = false;
         }
 
-        if(SendBird)
+        if(LandBird)
         {
-            SendToLocation(debugGoal.position);
-            SendBird = false;
+            LandAtLocation(debugGoal.position);
+            LandBird = false;
         }
     }
 
-    public void SendToLocation(Vector3 location)
+    /// <summary>
+    /// The bird will fly to a specified location and circle around it once it
+    /// arrives.
+    /// </summary>
+    /// <param name="direction"></param>
+    public void FlyToLocation(Vector3 location)
     {
+        BirdAIState oldState = currentState;
         flightGoal = location;
         currentState = BirdAIState.FlyingToGoal;
         characterController.Soar();
 
         wingsSource.volume = 1;
+        characterController.ForwardSpeedSet(forwardSpeed);
 
-        smoothFlight = true;
+        landAtDestination = false;
+
+        if (StateChanged != null) StateChanged(this, currentState, oldState);
+    }
+
+    /// <summary>
+    /// Tells the bird to stop whatever it's doing and hover in place.
+    /// </summary>
+    public void FloatInPlace()
+    {
+        characterController.forwardSpeed = 0;
+    }
+
+    /// <summary>
+    /// The bird will try to land at the specified location.
+    /// </summary>
+    /// <param name="location"></param>
+    public void LandAtLocation(Vector3 location)
+    {
+        BirdAIState oldState = currentState;
+        flightGoal = location;
+        currentState = BirdAIState.FlyingToGoal;
+        characterController.Soar();
+
+        wingsSource.volume = 1;
+        characterController.ForwardSpeedSet(forwardSpeed);
+
+        landAtDestination = true;
+
+        if(StateChanged != null) StateChanged(this, currentState, oldState);
     }
 
     public void Deselect()

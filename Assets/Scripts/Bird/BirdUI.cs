@@ -6,11 +6,17 @@ using System.Collections;
 /// </summary>
 public class BirdUI : MonoBehaviour
 {
+    [SerializeField] float WindowScaleSpeed = 5f;
+    [SerializeField] Transform HelpWindow;
+    [SerializeField] Transform UIWindow;
+    Vector3 initialScale;
+    Vector3 helpWindowInitialScale;
 
 	// Use this for initialization
 	void Start ()
     {
-	
+        initialScale = UIWindow.transform.localScale;
+        UIWindow.transform.localScale = Vector3.zero;
 	}
 	
 	// Update is called once per frame

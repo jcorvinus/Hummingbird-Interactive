@@ -76,7 +76,7 @@ public class ProgramController : MonoBehaviour
         if (BirdManager.Instance.SelectedBird != null)
         {
             Vector3 pointInFrontOfuser = Camera.main.transform.position + Camera.main.transform.forward + (Vector3.up * -0.1f);
-            BirdManager.Instance.SelectedBird.SendToLocation(pointInFrontOfuser);
+            BirdManager.Instance.SelectedBird.LandAtLocation(pointInFrontOfuser);
         }
         else
         {
@@ -109,7 +109,7 @@ public class ProgramController : MonoBehaviour
     {
         if (cursor.BirdCanLand)
         {
-            BirdManager.Instance.SelectedBird.SendToLocation(location);
+            BirdManager.Instance.SelectedBird.LandAtLocation(location);
             mapping.DrawVisualMeshes = false;
         }
         else
