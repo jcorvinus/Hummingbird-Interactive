@@ -74,6 +74,20 @@ public class BirdManager : MonoBehaviour
         }
     }
 
+    public Bird SelectAnyBird()
+    {
+        Bird b;
+        
+        if (birdList.Count > 0)
+        {
+            b = birdList[Random.Range(0, birdList.Count)];
+            SelectBird(b);
+            return b;
+        }
+
+        return null;
+    }
+
     public void AddBird(Bird newBird)
     {
         Awake();

@@ -866,7 +866,7 @@ Prefab:
         type: 2}
       propertyPath: takeoff_options.Array.data[0]
       value: 
-      objectReference: {fileID: 2087931399}
+      objectReference: {fileID: 483718963}
     - target: {fileID: 114000014265927098, guid: 1c0c8bc812de65f4daf68e5c518cfb8f,
         type: 2}
       propertyPath: takeoff_options.Array.data[1]
@@ -2090,7 +2090,7 @@ Prefab:
       objectReference: {fileID: 2100000, guid: 4b0f3315a044218428165ca0893aa0b5, type: 2}
     - target: {fileID: 11457956, guid: 499e4f36a1598e047acc990d600998c3, type: 2}
       propertyPath: DrawVisualMeshes
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 103226, guid: 499e4f36a1598e047acc990d600998c3, type: 2}
       propertyPath: m_Name

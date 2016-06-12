@@ -37,6 +37,7 @@ public class ProgramController : MonoBehaviour
     {
         keywords.Add("Select this bird", () =>
         {
+            StopChasingMe();
             var focusObject = GazeGestureManager.Instance.FocusedObject;
             if (focusObject != null)
             {
@@ -53,8 +54,18 @@ public class ProgramController : MonoBehaviour
             }
         });
 
+        keywords.Add("Select any bird", () =>
+        {
+            StopChasingMe();
+            if (BirdManager.Instance.SelectAnyBird())
+            {
+                textMan.SpeakText("picked");
+            }
+        });
+
         keywords.Add("Land over there", () =>
         {
+            StopChasingMe();
             if (BirdManager.Instance.SelectedBird != null)
             {
                 LandSelectedBirdAtLocation(cursor.transform.position);
@@ -67,6 +78,7 @@ public class ProgramController : MonoBehaviour
 
         keywords.Add("Spline there", () =>
         {
+            StopChasingMe();
             if (BirdManager.Instance.SelectedBird != null)
             {
                 textMan.SpeakText("tweet");
@@ -81,6 +93,7 @@ public class ProgramController : MonoBehaviour
 
         keywords.Add("Fly over there", () =>
         {
+            StopChasingMe();
             if (BirdManager.Instance.SelectedBird != null)
             {
                 FlyBirdToLocation();
@@ -139,6 +152,12 @@ public class ProgramController : MonoBehaviour
             StopChasingMe();
         });
 
+        keywords.Add("Swarm", () =>
+        {
+            StopChasingMe();
+            BirdManager.Instance.SendAllBirdsToLocation(GazeGestureManager.Instance.FocusedObject.transform.position);
+        });
+
 
 
         // Tell the KeywordRecognizer about our keywords.
@@ -163,7 +182,7 @@ public class ProgramController : MonoBehaviour
     {
         while (BirdManager.Instance.DestroyABird())
         {
-            //
+            
         }
     }
 
@@ -211,7 +230,7 @@ public class ProgramController : MonoBehaviour
     // Use this for initialization
     void Start ()
     {
-	
+	    
 	}
 	
 	// Update is called once per frame
