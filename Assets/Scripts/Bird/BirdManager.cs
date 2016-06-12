@@ -43,7 +43,8 @@ public class BirdManager : MonoBehaviour
     {
 	
 	}
-	
+
+    
 	// Update is called once per frame
 	void Update ()
     {
@@ -91,4 +92,28 @@ public class BirdManager : MonoBehaviour
 
         birdList.Remove(bird);
     }
+
+    // destroy the last bird in the list
+    public bool DestroyABird()
+    {
+        if (birdList.Count > 0)
+        {
+            Bird b = birdList[birdList.Count - 1];
+            RemoveBird(b);
+            DestroyObject(b.gameObject);
+            return true;
+        }
+        return false;
+    }
+
+
+    public void SendAllBirdsToLocation(Vector3 point)
+    {
+        foreach (Bird bird in birdList)
+        {
+            bird.FlyToLocation(point, false);
+        }
+    }
+
 }
+

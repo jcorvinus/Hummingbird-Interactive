@@ -4,7 +4,7 @@ using System.Collections;
 public class HummingbirdCharacterScript : MonoBehaviour {
 	public Animator hummingbirdAnimator;
 	public float animSpeed=5f;
-	Rigidbody hummingbirdRigid;
+	public Rigidbody hummingbirdRigid;
 	public bool isFlying=false;
 
 	public float forwardSpeed=3f;
@@ -17,6 +17,8 @@ public class HummingbirdCharacterScript : MonoBehaviour {
 		hummingbirdAnimator.speed = animSpeed;
 		hummingbirdRigid = GetComponentInParent<Rigidbody> ();
 	}	
+
+    
 
 	public void AnimSpeedSet(float speed){
 		animSpeed = speed;

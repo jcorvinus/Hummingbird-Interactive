@@ -18,6 +18,10 @@ public class LookatY : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        transform.LookAt(new Vector3(target.position.x, transform.position.y, target.position.z));
+        if (target)
+        {
+            // throws exception (on spawned birds)
+            transform.LookAt(new Vector3(target.position.x, transform.position.y, target.position.z));
+        }
 	}
 }
