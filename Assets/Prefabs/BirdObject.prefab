@@ -2610,7 +2610,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WindowScaleSpeed: 5
   HelpWindow: {fileID: 0}
-  UIWindow: {fileID: 0}
+  UIWindow: {fileID: 4000012316346726}
 --- !u!114 &114000011404275110
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2633,7 +2633,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 6b5dd44cdca989c4a831d9d76a5c3466, type: 3}
   currentState: 1
   turnSpeed: 4
-  forwardSpeed: 0
+  forwardSpeed: 0.3
   birdMeshSelectedColor: {r: 1, g: 0, b: 0, a: 1}
   debugGoal: {fileID: 0}
   BirdSing: 0
