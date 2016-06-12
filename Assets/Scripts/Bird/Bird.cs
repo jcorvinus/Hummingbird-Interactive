@@ -12,7 +12,6 @@ public class Bird : MonoBehaviour
     #region Other Components
     private SphereCollider sphereCollider;
     private Rigidbody rigidBody;
-    [SerializeField] MeshRenderer[] renderers;
     [SerializeField] AudioSource birdMouth;
     [SerializeField] AudioSource wingsSource;
     [SerializeField] AudioClip song;
@@ -280,5 +279,34 @@ public class Bird : MonoBehaviour
     {
         sender.StateChanged -= Bird_DisableDisplayOnStateChange;
         birdUI.CloseAll();
+
+        if(currentState == BirdAIState.Sitting)
+        {
+            StartCoroutine(BirdRotationFix());
+        }
+    }
+
+    IEnumerator BirdRotationFix()
+    {
+        float fixTime = 0.34f;
+        float fixTimer = 0;
+        float tValue = 0;
+
+        float localXRotation = transform.localRotation.eulerAngles.x;
+
+        while (fixTimer < fixTime)
+        {
+            if (currentState != BirdAIState.Sitting) yield break; // something has changed, abort.
+
+            fixTimer += Time.deltaTime;
+            tValue = Mathf.InverseLerp(0, fixTime, fixTimer);
+
+            transform.localRotation = Quaternion.Euler(Mathf.Lerp(localXRotation, 0, tValue),
+                transform.localRotation.eulerAngles.y, transform.localRotation.eulerAngles.z);
+
+            yield return null;
+        }
+
+        yield break;
     }
 }

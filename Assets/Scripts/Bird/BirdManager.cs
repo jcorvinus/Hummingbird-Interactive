@@ -72,6 +72,8 @@ public class BirdManager : MonoBehaviour
         {
             BirdSelected(this, selectedBird);
         }
+
+        UIAudio.Instance.PlayClickSound();
     }
 
     public void AddBird(Bird newBird)

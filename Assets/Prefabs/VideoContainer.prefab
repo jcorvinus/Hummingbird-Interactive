@@ -73,7 +73,7 @@ GameObject:
   - 4: {fileID: 4000012112691108}
   - 114: {fileID: 114000011817743050}
   m_Layer: 0
-  m_Name: UIContainer
+  m_Name: VideoContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
