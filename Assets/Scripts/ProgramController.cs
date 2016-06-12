@@ -65,6 +65,20 @@ public class ProgramController : MonoBehaviour
             }
         });
 
+        keywords.Add("Spline there", () =>
+        {
+            if (BirdManager.Instance.SelectedBird != null)
+            {
+                textMan.SpeakText("tweet");
+                BirdManager.Instance.SelectedBird.FollowSplineToLocation(cursor.transform.position, true);
+            }
+            else
+            {
+                textMan.SpeakText("No bird selected");
+            }
+        });
+
+
         keywords.Add("Fly over there", () =>
         {
             if (BirdManager.Instance.SelectedBird != null)
@@ -108,6 +122,12 @@ public class ProgramController : MonoBehaviour
         {
             KillAllBirds();
         });
+
+        keywords.Add("Die Die Die", () =>
+        {
+            KillAllBirds();
+        });
+
 
         keywords.Add("Chase Me", () =>
         {
@@ -232,17 +252,30 @@ public class ProgramController : MonoBehaviour
         {
             Vector3 pointInFrontOfuser = Camera.main.transform.position + Camera.main.transform.forward + (Vector3.up * -0.1f);
             BirdManager.Instance.SendAllBirdsToLocation(pointInFrontOfuser);
-            
-
         }
     }
 
     private void LandSelectedBirdAtLocation(Vector3 location)
     {
         if (cursor.BirdCanLand)
-        {
+        {           
+            Vector3 start = BirdManager.Instance.SelectedBird.transform.position;
+            Vector3 delta = location - start;
+            Vector3 dir = delta.normalized;        
+
+            Ray r = new Ray(start, dir);
+            RaycastHit hitInfo;
+            if (Physics.Raycast(r, out hitInfo, delta.magnitude))
+            {
+                GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+                sphere.GetComponent<SphereCollider>().isTrigger = true;                
+                sphere.transform.position = hitInfo.point;
+                float scale = 0.1f;
+                sphere.transform.localScale = new Vector3(scale, scale, scale);
+            }         
+            
             BirdManager.Instance.SelectedBird.LandAtLocation(location);
-            mapping.DrawVisualMeshes = false;
+            //mapping.DrawVisualMeshes = false;
         }
         else
         {

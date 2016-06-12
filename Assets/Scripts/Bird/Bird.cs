@@ -7,11 +7,14 @@ public class Bird : MonoBehaviour
     public event BirdStateChangeHandler StateChanged;
 
     // defines
-    public enum BirdAIState { Sitting, Floating, FlyingToGoal, Landing }
+    public enum BirdAIState { Sitting, Floating, FlyingToGoal, Landing, WalkingSpline }
 
     #region Other Components
     private SphereCollider sphereCollider;
     private Rigidbody rigidBody;
+    private SplineWalker splineWalker;
+    private PathChooser pathChooser;
+
     [SerializeField] MeshRenderer[] renderers;
     [SerializeField] AudioSource birdMouth;
     [SerializeField] AudioSource wingsSource;
@@ -58,12 +61,18 @@ public class Bird : MonoBehaviour
         rigidBody = GetComponent<Rigidbody>();
         characterController = GetComponentInChildren<HummingbirdCharacterScript>();
         birdUI = GetComponent<BirdUI>();
-	}
+        splineWalker = GetComponent<SplineWalker>();
+        pathChooser = GetComponent<PathChooser>();
+
+        
+    }
 
     void Start()
     {
         characterController.Soar();
         characterController.ForwardSpeedSet(0f);
+
+        
     }
 
     public bool SnapToGround()
@@ -170,6 +179,17 @@ public class Bird : MonoBehaviour
                 transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(directionToGoal, Vector3.up), turnSpeed * Time.deltaTime);
                 break;
 
+            case BirdAIState.WalkingSpline:
+               //if (splineWalker.progress >= 0.99f || Vector3.Distance(transform.position, flightGoal) < 0.1f)
+                    {
+                    // just go into the lerp mode
+                    splineWalker.started = false; // done with it
+                    currentState = BirdAIState.Landing;
+                    if (StateChanged != null) StateChanged(this, BirdAIState.Landing, BirdAIState.WalkingSpline);
+                    
+                }
+                break;
+
             default:
                 break;
         }
@@ -237,6 +257,26 @@ public class Bird : MonoBehaviour
         characterController.ForwardSpeedSet(forwardSpeed);
 
         if (StateChanged != null) StateChanged(this, currentState, oldState);
+    }
+
+    public void FollowSplineToLocation(Vector3 location, bool stopWhenDone)
+    {
+        stopAtDestination = stopWhenDone;
+
+        BirdAIState oldState = currentState;
+        flightGoal = location;
+        currentState = BirdAIState.WalkingSpline;
+
+        BezierSpline path = pathChooser.ChoosePath(transform, transform.position, location);
+        splineWalker.ResetPath(path);
+        splineWalker.started = true; 
+        characterController.Soar();
+
+        wingsSource.volume = 1;
+        characterController.ForwardSpeedSet(forwardSpeed);
+
+        if (StateChanged != null) StateChanged(this, currentState, oldState);
+
     }
 
     /// <summary>

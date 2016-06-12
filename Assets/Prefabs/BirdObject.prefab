@@ -330,6 +330,8 @@ GameObject:
   - 135: {fileID: 135000013338856184}
   - 114: {fileID: 114000011404275110}
   - 114: {fileID: 114000011359140524}
+  - 114: {fileID: 114000014265927098}
+  - 114: {fileID: 114000013891547804}
   m_Layer: 0
   m_Name: BirdObject
   m_TagString: Untagged
@@ -1740,7 +1742,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011279066108}
   m_LocalRotation: {x: -0, y: -1, z: -0, w: 0.0000029504295}
-  m_LocalPosition: {x: 0, y: -0.06, z: 1.456}
+  m_LocalPosition: {x: 0, y: -0.06, z: 1.177}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 4000013918307106}
@@ -3025,6 +3027,24 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114000013891547804
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011279066108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7be6efc844ad7914681ed1bb3d0baa6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  started: 0
+  spline: {fileID: 0}
+  progress: 0
+  duration: 2
+  lookForward: 0
+  mode: 0
+  last_position: {x: 0, y: 0, z: 0}
 --- !u!114 &114000013950809908
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3114,6 +3134,20 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 2, y: -2}
   m_UseGraphicAlpha: 1
+--- !u!114 &114000014265927098
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011279066108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6f2af9d8bbfcd2429a14a130768dbf4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  takeoff_options:
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!135 &135000013111502402
 SphereCollider:
   m_ObjectHideFlags: 1
