@@ -98,7 +98,7 @@ public class ProgramController : MonoBehaviour
         if (BirdManager.Instance.SelectedBird != null)
         {
             Vector3 pointInFrontOfuser = Camera.main.transform.position + Camera.main.transform.forward * 1.15f + (Vector3.up * -0.04f);
-            BirdManager.Instance.SelectedBird.FlyToLocation(pointInFrontOfuser);
+            BirdManager.Instance.SelectedBird.FlyToLocation(pointInFrontOfuser, true);
             BirdManager.Instance.SelectedBird.StateChanged += SelectedBird_ArrivedAtPlayer;
         }
         else
@@ -145,7 +145,7 @@ public class ProgramController : MonoBehaviour
     private void FlyBirdToLocation()
     {
         BirdManager.Instance.SelectedBird.FlyToLocation(Camera.main.transform.position
-            + Camera.main.transform.forward * 2.3f);
+            + Camera.main.transform.forward * 2.3f, false);
     }
 
     public void RegisterWorldTap()
