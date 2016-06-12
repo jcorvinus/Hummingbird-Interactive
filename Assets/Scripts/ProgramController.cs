@@ -159,7 +159,6 @@ public class ProgramController : MonoBehaviour
     {
         if(BirdManager.Instance.SelectedBird != null)
         {
-            textMan.SpeakText("Tap command successful");
             LandSelectedBirdAtLocation(cursor.transform.position);
         }
     }
