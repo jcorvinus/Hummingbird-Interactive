@@ -16,10 +16,10 @@ public class MovieAnim : MonoBehaviour
 	void Update ()
     {
         if (!movie.isPlaying) movie.Play();
-	    if(PlayMovie)
+        if (PlayMovie)
         {
             movie.Play();
             PlayMovie = false;
         }
-	}
+    }
 }

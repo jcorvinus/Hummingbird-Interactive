@@ -13,7 +13,8 @@ public class BirdUI : MonoBehaviour
     [SerializeField] float WindowScaleSpeed = 5f;
     [SerializeField] Transform HelpWindow;
     [SerializeField] Transform UIWindow;
-    [SerializeField] Transform VideoWindow;
+    [SerializeField] Transform[] InfoWindowItems;
+    [SerializeField] Transform[] VideoWindowItems;
     [SerializeField] float windowTweenTime = 0.45f;
     Vector3 initialScale;
     Vector3 helpWindowInitialScale;
@@ -25,9 +26,6 @@ public class BirdUI : MonoBehaviour
     Coroutine hideWindowCoroutine;
     bool hideCoroutineStarted = false;
     bool hideCoroutineFinished = false;
-
-    Coroutine showVideoCoroutine;
-    Coroutine hideVideoCoroutine;
 
     private bool hovering = false;
 
@@ -120,24 +118,29 @@ public class BirdUI : MonoBehaviour
     #region Video Methods
     public void ShowVideo()
     {
+        Debug.LogError("ShowVideo");
         HideTweenFinished += Info_HideTweenFinished;
         hideWindowCoroutine = StartCoroutine(HideWindowCoroutine(UIWindow));
         UIAudio.Instance.PlayClickSound();
     }
 
+    private void SetVideoItems(bool active)
+    {
+        //foreach (Transform item in VideoWindowItems) item.gameObject.SetActive(active);
+    }
+
     private void Info_HideTweenFinished(BirdUI sender)
     {
         HideTweenFinished -= Info_HideTweenFinished;
-
-        VideoWindow.gameObject.SetActive(true);
-        if (hideVideoCoroutine != null) StopCoroutine(hideVideoCoroutine);
-        showVideoCoroutine = StartCoroutine(ShowWindowCoroutine(VideoWindow));
+        SetInfoItems(false);
+        SetVideoItems(true);
+        showWindowCoroutine = StartCoroutine(ShowWindowCoroutine(UIWindow));
     }
 
     public void HideVideo()
     {
         HideTweenFinished += Video_HideTweenFinished;
-        hideVideoCoroutine = StartCoroutine(HideWindowCoroutine(VideoWindow));
+        hideWindowCoroutine = StartCoroutine(HideWindowCoroutine(UIWindow));
 
         UIAudio.Instance.PlayClickSound();
     }
@@ -145,6 +148,8 @@ public class BirdUI : MonoBehaviour
     private void Video_HideTweenFinished(BirdUI sender)
     {
         sender.HideTweenFinished -= Video_HideTweenFinished;
+        SetVideoItems(false);
+        SetInfoItems(true);
         ShowInfoDisplay();
     }
     #endregion
@@ -155,8 +160,6 @@ public class BirdUI : MonoBehaviour
         showCoroutineStarted = true;
         float timer = 0;
         float tValue = 0;
-
-        target.gameObject.SetActive(true);
 
         while(timer < windowTweenTime)
         {
@@ -191,10 +194,14 @@ public class BirdUI : MonoBehaviour
             yield return null;
         }
 
-        target.gameObject.SetActive(false);
         target.transform.localScale = Vector3.zero;
         hideCoroutineFinished = true;
         yield break;
+    }
+
+    private void SetInfoItems(bool active)
+    {
+        //foreach (Transform item in InfoWindowItems) item.gameObject.SetActive(active);
     }
 
     public void ShowInfoDisplay()
@@ -202,8 +209,17 @@ public class BirdUI : MonoBehaviour
         if (hideWindowCoroutine != null) StopCoroutine(hideWindowCoroutine);
 
         HelpWindow.gameObject.SetActive(false);
+
+        ShowTweenFinished += ShowInfo_TweenFinished;
         showWindowCoroutine = StartCoroutine(ShowWindowCoroutine(UIWindow));
         UIAudio.Instance.PlayClickSound();
+    }
+
+    private void ShowInfo_TweenFinished(BirdUI sender)
+    {
+        sender.ShowTweenFinished -= ShowInfo_TweenFinished;
+        SetInfoItems(true);
+        SetVideoItems(false);
     }
     #endregion
 
@@ -211,9 +227,6 @@ public class BirdUI : MonoBehaviour
     {
         if (showWindowCoroutine != null) StopCoroutine(showWindowCoroutine);
         if (UIWindow.gameObject.activeInHierarchy) hideWindowCoroutine = StartCoroutine(HideWindowCoroutine(UIWindow));
-
-        if (showVideoCoroutine != null) StopCoroutine(showVideoCoroutine);
-        if (VideoWindow.gameObject.activeInHierarchy) hideVideoCoroutine = StartCoroutine(HideWindowCoroutine(VideoWindow));
 
         HideTweenFinished = null;
         ShowTweenFinished = null;
